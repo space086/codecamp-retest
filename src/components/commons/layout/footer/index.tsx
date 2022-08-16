@@ -1,4 +1,11 @@
-import { Wrap, Logo, TextWrap, ColumnWrap, Row } from "./LayoutFooter.styles";
+import {
+  Wrap,
+  Logo,
+  TextWrap,
+  ColumnWrap,
+  Row,
+  Row2,
+} from "./LayoutFooter.styles";
 
 export default function LayoutFooter() {
   return (
@@ -19,8 +26,8 @@ export default function LayoutFooter() {
           <Row>학원 등록 번호: 제 5845호</Row>
         </ColumnWrap>
         <ColumnWrap>
-          <Row>개인정보 처리방침</Row>
-          <Row>서비스 이용 약관</Row>
+          <Row2>개인정보 처리방침</Row2>
+          <Row2>서비스 이용 약관</Row2>
         </ColumnWrap>
         <ColumnWrap>
           <Row>Copyright © 2022. Dingco Corp., Ltd.</Row>

@@ -20,4 +20,20 @@ export const ColumnWrap = styled.div`
   display: flex;
   flex-direction: row;
 `;
-export const Row = styled.div``;
+export const Row = styled.span`
+  font-size: 10px;
+  margin-bottom: 11px;
+
+  :nth-child(1) {
+    margin-right: 90px;
+  }
+`;
+
+export const Row2 = styled.span`
+  font-size: 10px;
+  margin-bottom: 11px;
+
+  :nth-child(1) {
+    margin-right: 15px;
+  }
+`;
