@@ -14,23 +14,24 @@ const Wrap = styled.div`
 export default function Layout(props: any) {
   const router = useRouter();
 
-  const HIDDEN_HEADER = ["/login/", "/signup/"];
-  const HIDDEN_NAVIGATION = ["/login/", "/signup/"];
-  const HIDDEN_BANNER = ["/login/", "/signup/"];
-  const HIDDEN_FOOTER = ["/login/", "/signup/"];
+  const HIDDEN_HEADER = ["/login", "/signup"];
+  // const HIDDEN_NAVIGATION = [];
+  const HIDDEN_BANNER = ["/login", "/signup"];
+  // const HIDDEN_FOOTER = [];
 
   const isHiddenHeader = HIDDEN_HEADER.includes(router.asPath);
-  const isHiddenNavigation = HIDDEN_NAVIGATION.includes(router.asPath);
+  // const isHiddenNavigation = HIDDEN_NAVIGATION.includes(router.asPath);
   const isHiddenBanner = HIDDEN_BANNER.includes(router.asPath);
-  const isHiddenFooter = HIDDEN_FOOTER.includes(router.asPath);
+  // const isHiddenFooter = HIDDEN_FOOTER.includes(router.asPath);
 
   return (
     <Wrap>
       {!isHiddenHeader && <LayoutHeader />}
-      {!isHiddenNavigation && <LayoutNavigation />}
+      <LayoutNavigation />
       {!isHiddenBanner && <LayoutBanner />}
       <div>{props.children}</div>
-      {!isHiddenFooter && <LayoutFooter />}
+      {/* {!isHiddenFooter && <LayoutFooter />} */}
+      <LayoutFooter />
     </Wrap>
   );
 }

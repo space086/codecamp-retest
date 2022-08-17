@@ -1,9 +1,9 @@
 import { useRouter } from "next/router";
 import { useQuery } from "@apollo/client";
-import BrandListUI from "./BrandList.presenter";
-import { FETCH_USED_ITEMS } from "./BrandList.queries";
+import BrandListUI from "./BrandMain.presenter";
+import { FETCH_USED_ITEMS } from "./BrandMain.queries";
 
-export default function BrandList() {
+export default function BrandMain() {
   const router = useRouter();
 
   const { data, fetchMore } = useQuery(FETCH_USED_ITEMS);

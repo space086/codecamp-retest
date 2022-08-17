@@ -1,28 +1,45 @@
-import {
-  Wrap,
-  ContentsWrap,
-  LeftWrap,
-  Btn,
-  Line,
-  RightWrap,
-} from "./LayoutNavigation.styles";
+import * as S from "./LayoutNavigation.styles";
 
 export default function LayoutNavigation() {
   return (
-    <Wrap>
-      <ContentsWrap>
-        <LeftWrap>
-          <Btn>BRAND</Btn>
-          <Btn>CATEGORY</Btn>
-          <Btn>LIFE</Btn>
-          <Btn>BEAUTY</Btn>
-        </LeftWrap>
-        <Line></Line>
-        <RightWrap>
-          <Btn>#STYLE</Btn>
-          <Btn>EVENT</Btn>
-        </RightWrap>
-      </ContentsWrap>
-    </Wrap>
+    <S.Wrap>
+      {/* 메인화면 네비게이션 */}
+      {`/login` ? (
+        <S.ContentsWrap2>
+          <S.Logo src="/images/logo-w.png" />
+          <S.LeftWrap2>
+            <S.Btn2>BRAND</S.Btn2>
+            <S.Btn2>CATEGORY</S.Btn2>
+            <S.Btn2>LIFE</S.Btn2>
+            <S.Btn>BEAUTY</S.Btn>
+          </S.LeftWrap2>
+          <S.Line2></S.Line2>
+          <S.RightWrap2>
+            <S.Btn2>#STYLE</S.Btn2>
+            <S.Btn2>EVENT</S.Btn2>
+            <S.Btn2>BEST</S.Btn2>
+            <S.RowWrap>
+              <S.Btn3>회원가입</S.Btn3>
+              <S.Btn3>장바구니</S.Btn3>
+            </S.RowWrap>
+          </S.RightWrap2>
+        </S.ContentsWrap2>
+      ) : (
+        <S.ContentsWrap>
+          <S.LeftWrap>
+            <S.Btn>BRAND</S.Btn>
+            <S.Btn>CATEGORY</S.Btn>
+            <S.Btn>LIFE</S.Btn>
+            <S.Btn>BEAUTY</S.Btn>
+          </S.LeftWrap>
+          <S.Line></S.Line>
+          <S.RightWrap>
+            <S.Btn>#STYLE</S.Btn>
+            <S.Btn>EVENT</S.Btn>
+            <S.Btn>BEST</S.Btn>
+          </S.RightWrap>
+        </S.ContentsWrap>
+      )}
+    </S.Wrap>
   );
 }

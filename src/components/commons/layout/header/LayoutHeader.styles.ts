@@ -26,6 +26,7 @@ export const Text = styled.span`
   font-family: "Roboto";
   font-size: 14px;
   margin-left: 66px;
+  cursor: pointer;
 
   :first-child {
     margin-left: 0px;

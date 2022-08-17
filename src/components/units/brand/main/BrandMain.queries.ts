@@ -8,6 +8,9 @@ export const FETCH_USED_ITEMS = gql`
       remarks
       tags
       price
+      seller {
+        name
+      }
       createdAt
       images
     }
