@@ -1,7 +1,8 @@
 import styled from "@emotion/styled";
 
 const Button = styled.button`
-  background-color: #FFD600;
+  background-color: #000;
+  color: white;
   border: none;
   width: 600px;
   height: 88px;
@@ -11,6 +12,6 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-export default function Button01(props:any) {
+export default function Button01(props: any) {
   return <Button type={props.type}>{props.title}</Button>;
 }

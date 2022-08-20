@@ -6,19 +6,23 @@ export const Wrap = styled.section`
 `;
 
 export const Title = styled.h2`
-  font-size: 1.5em;
+  font-size: 2.5em;
+  font-weight: 400;
+  text-align: center;
+  margin: 95px auto 115px;
 `;
 
 export const Line = styled.div`
-  min-width: 1200px;
-  height: 10px;
-  background-color: #eee;
+  min-width: 90vw;
+  height: 1px;
+  background-color: #555;
 `;
 
 export const InputWrap = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
+  margin: 175px auto 312px;
 `;
 
 export const ColumnWrap = styled.div`
@@ -29,6 +33,7 @@ export const ColumnWrap = styled.div`
 export const RowWrap = styled.div`
   display: flex;
   flex-direction: row;
+  margin-bottom: 24px;
 `;
 
 export const Text = styled.span`

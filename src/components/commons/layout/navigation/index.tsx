@@ -1,10 +1,19 @@
+import { useRouter } from "next/router";
 import * as S from "./LayoutNavigation.styles";
 
 export default function LayoutNavigation() {
+  const router = useRouter();
+
+  const HIDDEN_NAVIGATION = ["/login", "/signup"];
+  const isHiddenNavigation = HIDDEN_NAVIGATION.includes(router.asPath);
+
+  const HIDDEN_NAVIGATION2 = ["/"];
+  const isHiddenNavigation2 = HIDDEN_NAVIGATION2.includes(router.asPath);
+
   return (
     <S.Wrap>
-      {/* 메인화면 네비게이션 */}
-      {`/login` ? (
+      {/* 로그인/회원가입 네비게이션 */}
+      {isHiddenNavigation && (
         <S.ContentsWrap2>
           <S.Logo src="/images/logo-w.png" />
           <S.LeftWrap2>
@@ -24,7 +33,10 @@ export default function LayoutNavigation() {
             </S.RowWrap>
           </S.RightWrap2>
         </S.ContentsWrap2>
-      ) : (
+      )}
+
+      {/* 메인화면 네비게이션 */}
+      {isHiddenNavigation2 && (
         <S.ContentsWrap>
           <S.LeftWrap>
             <S.Btn>BRAND</S.Btn>

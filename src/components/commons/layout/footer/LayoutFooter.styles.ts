@@ -4,6 +4,7 @@ export const Wrap = styled.div`
   width: 100%;
   height: 317px;
   background-color: #f1f1f1;
+  border-top: 1px solid #555;
 `;
 
 export const Logo = styled.img`
