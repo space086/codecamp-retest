@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import SignUpUI from "./SignUpUI.presenter";
+import SignUpUI from "./signup.presenter";
 import { useApolloClient, useMutation } from "@apollo/client";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -29,7 +29,7 @@ const schema = yup.object({
   name: yup.string().required("이름은 필수 입력입니다."),
 });
 
-export default function Join(props: any) {
+export default function SignUp(props: any) {
   const router = useRouter();
 
   const [createUser] = useMutation(CREATE_USER);
@@ -37,10 +37,6 @@ export default function Join(props: any) {
 
   const onClickCancel = () => {
     router.push("/markets");
-  };
-
-  const onClickLogin = () => {
-    router.push("/login");
   };
 
   const onClickSubmit = async (data: any) => {
@@ -75,7 +71,6 @@ export default function Join(props: any) {
       formState={formState}
       register={register}
       onClickCancel={onClickCancel}
-      onClickLogin={onClickLogin}
     />
   );
 }

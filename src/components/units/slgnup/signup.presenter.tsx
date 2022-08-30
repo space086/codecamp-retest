@@ -5,7 +5,7 @@ import Input01 from "../../commons/input/01";
 export default function SignUpUI(props: any) {
   return (
     <S.Wrap>
-      <S.Title>JOIN</S.Title>
+      <S.Title>JOIN MEMBER</S.Title>
       <S.Line></S.Line>
       <S.InputWrap>
         <S.ColumnWrap>
@@ -16,6 +16,7 @@ export default function SignUpUI(props: any) {
               register={props.register("email")}
               placeholder="이메일 아이디를 @까지 정확하게 입력하세요"
             />
+            <S.Error>{props.formState.errors.email?.message}</S.Error>
           </S.RowWrap>
           <S.RowWrap>
             <S.Text>비밀번호</S.Text>
@@ -24,9 +25,29 @@ export default function SignUpUI(props: any) {
               register={props.register("password")}
               placeholder="영문+숫자 조합 8~16자리를 입력해주세요."
             />
+            <S.Error>{props.formState.errors.password?.message}</S.Error>
+          </S.RowWrap>
+          <S.RowWrap>
+            <S.Text>비밀번호 확인</S.Text>
+            <Input01
+              type="password"
+              register={props.register("password")}
+              placeholder="영문+숫자 조합 8~16자리를 입력해주세요."
+            />
+            <S.Error>{props.formState.errors.password?.message}</S.Error>
+          </S.RowWrap>
+          <S.RowWrap>
+            <S.Text>이름</S.Text>
+            <Input01
+              type="text"
+              register={props.register("name")}
+              placeholder="Ex)홍길동"
+            />
+            <S.Error>{props.formState.errors.name?.message}</S.Error>
           </S.RowWrap>
         </S.ColumnWrap>
-        <Button01 isActive={props.formState.isValid} title="로그인" />
+        <S.CancelBtn onClick={props.onClickCancel}>취소</S.CancelBtn>
+        <S.SubmitBtn onClick={props.onClickSubmit}>확인</S.SubmitBtn>
       </S.InputWrap>
     </S.Wrap>
   );
