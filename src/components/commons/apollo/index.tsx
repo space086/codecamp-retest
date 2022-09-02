@@ -10,7 +10,6 @@ import { ReactNode, useEffect } from "react";
 import { onError } from "@apollo/client/link/error";
 import { getAccessToken } from "../../../commons/libraries/getAccessToken";
 import { accessTokenState, basketState } from "../../../commons/store";
-import { gql } from "graphql-request";
 
 interface IProps {
   children: ReactNode;

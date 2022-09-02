@@ -46,9 +46,12 @@ export default function SignUpUI(props: any) {
             <S.Error>{props.formState.errors.name?.message}</S.Error>
           </S.RowWrap>
         </S.ColumnWrap>
+      </S.InputWrap>
+      <S.Line2></S.Line2>
+      <S.BtnWrap>
         <S.CancelBtn onClick={props.onClickCancel}>취소</S.CancelBtn>
         <S.SubmitBtn onClick={props.onClickSubmit}>확인</S.SubmitBtn>
-      </S.InputWrap>
+      </S.BtnWrap>
     </S.Wrap>
   );
 }

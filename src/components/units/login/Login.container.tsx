@@ -57,8 +57,9 @@ export default function Login() {
     localStorage.setItem("refreshToken", accessToken);
     localStorage.setItem("userInfo", JSON.stringify(userInfo));
 
+    alert("로그인 성공");
     Modal.success({ content: "로그인에 성공하였습니다!" });
-    router.push("/markets");
+    router.push("/");
   };
 
   const { register, handleSubmit, formState } = useForm({

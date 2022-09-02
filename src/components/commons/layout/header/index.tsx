@@ -1,8 +1,20 @@
+import { gql, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { Wrap, Logo, RightWrap, Text } from "./LayoutHeader.styles";
 
+const FETCH_BOARD_LOGGED_IN = gql`
+  query fetchLoggedIn {
+    fetchUserLoggedIn {
+      email
+      name
+    }
+  }
+`;
+
 export default function LayoutHeader() {
   const router = useRouter();
+
+  const { data } = useQuery(FETCH_BOARD_LOGGED_IN);
 
   const onClickMoveToMain = () => {
     router.push("/");
@@ -19,7 +31,15 @@ export default function LayoutHeader() {
     <Wrap>
       <Logo src="/images/logo.png" onClick={onClickMoveToMain} />
       <RightWrap>
-        <Text onClick={onClickMoveToLogin}>로그인</Text>
+        <div>
+          <div>
+            {data?.fetchUserLoggedIn
+              ? `${data?.fetchUserLoggedIn.name}님 환영합니다.`
+              : ""}
+          </div>
+          <Text onClick={onClickMoveToLogin}>로그인</Text>
+        </div>
+        {/* <Text onClick={onClickMoveToLogin}>로그인</Text> */}
         <Text onClick={onClickMoveToSignUp}>회원가입</Text>
         <Text>장바구니</Text>
       </RightWrap>

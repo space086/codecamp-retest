@@ -36,12 +36,12 @@ export default function SignUp(props: any) {
   const client = useApolloClient();
 
   const onClickCancel = () => {
-    router.push("/markets");
+    router.push("/");
   };
 
   const onClickSubmit = async (data: any) => {
     try {
-      const result = await createUser({
+      await createUser({
         variables: {
           createUserInput: {
             email: data.email,
@@ -52,7 +52,7 @@ export default function SignUp(props: any) {
       });
       // const accessToken = result.data.joinUser.accessToken;
       Modal.success({ content: "회원가입 성공하였습니다!" });
-      router.push("/markets");
+      router.push("/");
     } catch (error) {
       console.log(error);
       Modal.error({ content: error.message });

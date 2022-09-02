@@ -18,19 +18,19 @@ export const Line = styled.div`
   width: 90%;
   height: 1px;
   background-color: #555;
+  margin-bottom: 40px;
 `;
 
 export const InputWrap = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
-  margin: 175px auto 312px;
+  align-items: center;
 `;
 
 export const ColumnWrap = styled.div`
   display: flex;
   flex-direction: column;
-  margin-right: 30px;
 `;
 
 export const RowWrap = styled.div`
@@ -53,14 +53,32 @@ export const Error = styled.div`
 
 export const CancelBtn = styled.div`
   width: 186px;
-  height: 56px;
+  height: 55px;
   border: 1px solid #000;
+  text-align: center;
+  line-height: 55px;
   cursor: pointer;
+  margin-right: 20px;
 `;
 export const SubmitBtn = styled.div`
   width: 186px;
   height: 56px;
+  line-height: 56px;
   background-color: #000;
   color: #fff;
+  text-align: center;
   cursor: pointer;
+`;
+
+export const Line2 = styled.div`
+  width: 90%;
+  height: 1px;
+  background-color: #555;
+  margin: 40px auto 0px;
+`;
+
+export const BtnWrap = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin: 68px auto 100px;
 `;

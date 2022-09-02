@@ -37,11 +37,12 @@ export const RowWrap = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  height: 56px;
   margin-bottom: 24px;
 `;
 
 export const Text = styled.span`
-  font-size: 1em;
+  font-size: 24px;
   width: 113px;
 `;
 
