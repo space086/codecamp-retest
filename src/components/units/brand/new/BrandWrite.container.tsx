@@ -26,7 +26,7 @@ export const schema = yup.object({
     .required("가격 입력은 필수 사항입니다."),
 });
 
-export default function MarketWrite(props: any) {
+export default function BrandWrite(props: any) {
   // 권한분기
   // useAuth();
 

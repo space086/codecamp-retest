@@ -4,6 +4,14 @@ import * as S from "./LayoutNavigation.styles";
 export default function LayoutNavigation() {
   const router = useRouter();
 
+  const onClickMoveToSignUp = () => {
+    router.push("/signup");
+  };
+
+  const onClickMoveToMain = () => {
+    router.push("/");
+  };
+
   const HIDDEN_NAVIGATION = ["/login", "/signup"];
   const isHiddenNavigation = HIDDEN_NAVIGATION.includes(router.asPath);
 
@@ -15,7 +23,7 @@ export default function LayoutNavigation() {
       {/* 로그인/회원가입 네비게이션 */}
       {isHiddenNavigation && (
         <S.ContentsWrap2>
-          <S.Logo src="/images/logo-w.png" />
+          <S.Logo src="/images/logo-w.png" onClick={onClickMoveToMain} />
           <S.LeftWrap2>
             <S.Btn2>BRAND</S.Btn2>
             <S.Btn2>CATEGORY</S.Btn2>
@@ -28,7 +36,7 @@ export default function LayoutNavigation() {
             <S.Btn2>EVENT</S.Btn2>
             <S.Btn2>BEST</S.Btn2>
             <S.RowWrap>
-              <S.Btn3>회원가입</S.Btn3>
+              <S.Btn3 onClick={onClickMoveToSignUp}>회원가입</S.Btn3>
               <S.Btn3>장바구니</S.Btn3>
             </S.RowWrap>
           </S.RightWrap2>

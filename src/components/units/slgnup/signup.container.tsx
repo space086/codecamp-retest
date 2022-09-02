@@ -3,7 +3,7 @@ import SignUpUI from "./signup.presenter";
 import { useApolloClient, useMutation } from "@apollo/client";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-// import { accessTokenState, userInfoState } from "../../../commons/store";
+import { accessTokenState, userInfoState } from "../../../commons/store";
 import { Modal } from "antd";
 import { useForm } from "react-hook-form";
 import { CREATE_USER } from "./signup.queries";

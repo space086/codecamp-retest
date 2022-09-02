@@ -1,9 +1,9 @@
 import * as S from "./BrandList.styles";
 import InfiniteScroll from "react-infinite-scroller";
 import { getDate } from "../../../../commons/libraries/utils";
-import { IBrandListUIProps } from "./BrandList.types";
+// import { IBrandListUIProps } from "./BrandList.types";
 
-export default function BrandListUI(props: IBrandListUIProps) {
+export default function BrandListUI(props: any) {
   return (
     <>
       <InfiniteScroll

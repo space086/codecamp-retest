@@ -1,9 +1,9 @@
 // import { getDate } from  '../../../../commons/libraries/utils';
-import * as S from './MarketsDetail.styles'
-import DOMPurify from 'dompurify'
+import * as S from "./BrandDetail.styles";
+import DOMPurify from "dompurify";
 // import Icon, { HeartOutlined, } from '@ant-design/icons'
-import Icon, { HomeOutlined } from '@ant-design/icons';
-import type { CustomIconComponentProps } from '@ant-design/icons/lib/components/Icon';
+import Icon, { HomeOutlined } from "@ant-design/icons";
+import type { CustomIconComponentProps } from "@ant-design/icons/lib/components/Icon";
 
 const HeartSvg = () => (
   <svg width="1em" height="1em" fill="currentColor" viewBox="0 0 1024 1024">
@@ -14,17 +14,17 @@ const HeartSvg = () => (
 const HeartIcon = (props: Partial<CustomIconComponentProps>) => (
   <Icon component={HeartSvg} {...props} />
 );
-export default function MarketsDetailUI(props: any){
-  console.log(props.data?.fetchUseditem)
+export default function BrandDetailUI(props: any) {
+  console.log(props.data?.fetchUseditem);
   return (
     <S.Body>
       <S.ItemWrap>
-        {props.data?.fetchUseditem?.images[0] ? ( 
-          <S.ItemImg 
+        {props.data?.fetchUseditem?.images[0] ? (
+          <S.ItemImg
             src={`https://storage.googleapis.com/${props.data?.fetchUseditem?.images[0]}`}
           />
-          ) : (
-          <S.ItemImg src="../images/blank.png"/>
+        ) : (
+          <S.ItemImg src="../images/blank.png" />
         )}
         {/* <S.ItemImg src={`https://storage.googleapis.com/${props.data?.fetchUseditem?.images[0]}`}/> */}
         <S.ItemInfoWrap>
@@ -32,8 +32,14 @@ export default function MarketsDetailUI(props: any){
             <S.ItemName>{props.data?.fetchUseditem.name}</S.ItemName>
             <S.RowWrap>
               {/* <S.CorretIcon src="../images/correct.png" id={el._id} onClick={props.onClickUpdate} /> */}
-              <S.CorretIcon src="../images/correct.png" onClick={props.onClickMoveToMarketsEdit} />
-              <S.DeleteIcon src="../images/delete.png" onClick={props.onClickMarketsDelete} />
+              <S.CorretIcon
+                src="../images/correct.png"
+                onClick={props.onClickMoveToMarketsEdit}
+              />
+              <S.DeleteIcon
+                src="../images/delete.png"
+                onClick={props.onClickMarketsDelete}
+              />
             </S.RowWrap>
           </S.RowWrap>
           <S.RowWrap02>
@@ -49,9 +55,11 @@ export default function MarketsDetailUI(props: any){
           <S.Line02></S.Line02>
           <S.ItemBtn>
             <S.PickBtnWrap>
-              <HeartIcon style={{ color: 'hotpink' }} />
+              <HeartIcon style={{ color: "hotpink" }} />
               <S.PickBtn>찜</S.PickBtn>
-              <S.PickCount>{props.data?.fetchUseditem?.pickedCount}</S.PickCount>
+              <S.PickCount>
+                {props.data?.fetchUseditem?.pickedCount}
+              </S.PickCount>
             </S.PickBtnWrap>
             <S.BusketBtn onClick={props.onClickbaskets}>장바구니</S.BusketBtn>
             <S.BuyBtn>바로구매</S.BuyBtn>
@@ -63,11 +71,11 @@ export default function MarketsDetailUI(props: any){
           <S.ItemDetailTitle>상품정보</S.ItemDetailTitle>
           <S.Line03></S.Line03>
           {props.data?.fetchUseditem?.images
-          .filter((el)=> el)
-          .map((el: any) => (
-              <S.Image2 src={`https://storage.googleapis.com/${el}`}/>
-          ))}
-         
+            .filter((el) => el)
+            .map((el: any) => (
+              <S.Image2 src={`https://storage.googleapis.com/${el}`} />
+            ))}
+
           {/* <S.Contents>
             contents contents contents contents contents contents contents contents contents contents contents contents contents contents contents contents contents contents contents contents contents contents contents contents contents contents contents contents contents contents contents contents contents contents contents contents contents contents contents contents contents contents contents contents contents contents contents contents contents contents contents contents contents contents contents 
           </S.Contents> */}
@@ -77,15 +85,15 @@ export default function MarketsDetailUI(props: any){
                 __html: DOMPurify.sanitize(props.data?.fetchUseditem.contents),
               }}
             ></S.Contents>
-            ) : (
-              <S.Contents />
-            )}
+          ) : (
+            <S.Contents />
+          )}
           <S.ItemDealWrap>
             <S.ItemDealTitleWrap>
               <S.LocationIcon src="../images/location.png" />
               <S.DealText>거래지역</S.DealText>
             </S.ItemDealTitleWrap>
-            <S.Map id='map'></S.Map>
+            <S.Map id="map"></S.Map>
           </S.ItemDealWrap>
         </S.ItemDetailWrap>
         <S.ColumnLine></S.ColumnLine>
@@ -103,5 +111,5 @@ export default function MarketsDetailUI(props: any){
         </S.ColumnWrap>
       </S.DetailWrap>
     </S.Body>
-  )
+  );
 }
