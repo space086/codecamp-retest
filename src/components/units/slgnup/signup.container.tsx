@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import SignUpUI from "./signup.presenter";
-import { useApolloClient, useMutation } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { accessTokenState, userInfoState } from "../../../commons/store";
@@ -33,7 +33,7 @@ export default function SignUp(props: any) {
   const router = useRouter();
 
   const [createUser] = useMutation(CREATE_USER);
-  const client = useApolloClient();
+  // const client = useApolloClient();
 
   const onClickCancel = () => {
     router.push("/");

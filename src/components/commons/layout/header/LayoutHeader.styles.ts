@@ -22,6 +22,13 @@ export const RightWrap = styled.div`
   margin-top: 36px;
 `;
 
+export const LoginWrap = styled.div`
+  cursor: pointer;
+`;
+
+export const LoginOn = styled.span`
+  color: red;
+`;
 export const Text = styled.span`
   font-family: "Roboto";
   font-size: 14px;

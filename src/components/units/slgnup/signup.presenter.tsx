@@ -9,42 +9,44 @@ export default function SignUpUI(props: any) {
       <S.Line></S.Line>
       <S.InputWrap>
         <S.ColumnWrap>
-          <S.RowWrap>
-            <S.Text>아이디</S.Text>
-            <Input01
-              type="text"
-              register={props.register("email")}
-              placeholder="이메일 아이디를 @까지 정확하게 입력하세요"
-            />
-            <S.Error>{props.formState.errors.email?.message}</S.Error>
-          </S.RowWrap>
-          <S.RowWrap>
-            <S.Text>비밀번호</S.Text>
-            <Input01
-              type="password"
-              register={props.register("password")}
-              placeholder="영문+숫자 조합 8~16자리를 입력해주세요."
-            />
-            <S.Error>{props.formState.errors.password?.message}</S.Error>
-          </S.RowWrap>
-          <S.RowWrap>
-            <S.Text>비밀번호 확인</S.Text>
-            <Input01
-              type="password"
-              register={props.register("password")}
-              placeholder="영문+숫자 조합 8~16자리를 입력해주세요."
-            />
-            <S.Error>{props.formState.errors.password?.message}</S.Error>
-          </S.RowWrap>
-          <S.RowWrap>
-            <S.Text>이름</S.Text>
-            <Input01
-              type="text"
-              register={props.register("name")}
-              placeholder="Ex)홍길동"
-            />
-            <S.Error>{props.formState.errors.name?.message}</S.Error>
-          </S.RowWrap>
+          <form onSubmit={props.handleSubmit(props.onClickSubmit)}>
+            <S.RowWrap>
+              <S.Text>아이디</S.Text>
+              <Input01
+                type="text"
+                register={props.register("email")}
+                placeholder="이메일 아이디를 @까지 정확하게 입력하세요"
+              />
+              <S.Error>{props.formState.errors.email?.message}</S.Error>
+            </S.RowWrap>
+            <S.RowWrap>
+              <S.Text>비밀번호</S.Text>
+              <Input01
+                type="password"
+                register={props.register("password")}
+                placeholder="영문+숫자 조합 8~16자리를 입력해주세요."
+              />
+              <S.Error>{props.formState.errors.password?.message}</S.Error>
+            </S.RowWrap>
+            <S.RowWrap>
+              <S.Text>비밀번호 확인</S.Text>
+              <Input01
+                type="password"
+                register={props.register("password")}
+                placeholder="영문+숫자 조합 8~16자리를 입력해주세요."
+              />
+              <S.Error>{props.formState.errors.password?.message}</S.Error>
+            </S.RowWrap>
+            <S.RowWrap>
+              <S.Text>이름</S.Text>
+              <Input01
+                type="text"
+                register={props.register("name")}
+                placeholder="Ex)홍길동"
+              />
+              <S.Error>{props.formState.errors.name?.message}</S.Error>
+            </S.RowWrap>
+          </form>
         </S.ColumnWrap>
       </S.InputWrap>
       <S.Line2></S.Line2>
