@@ -47,8 +47,9 @@ export const Text = styled.span`
 export const Error = styled.div`
   color: red;
   font-size: 9px;
-  margin-bottom: 30px;
-  margin-top: 14px;
+  text-align: center;
+  margin-top: -15px;
+  margin-bottom: 5px;
 `;
 
 export const CancelBtn = styled.div`

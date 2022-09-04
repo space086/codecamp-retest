@@ -25,6 +25,11 @@ export const InputWrap = styled.div`
   flex-direction: row;
   justify-content: center;
   margin: 175px auto 312px;
+
+  form {
+    display: flex;
+    flex-wrap: wrap;
+  }
 `;
 
 export const ColumnWrap = styled.div`

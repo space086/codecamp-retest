@@ -1,16 +1,15 @@
 import styled from "@emotion/styled";
 
 const Button = styled.button`
-  background-color: #000;
-  color: white;
-  border: none;
   width: 186px;
-  height: 136px;
-  font-size: 20px;
-  font-weight: 700;
+  height: 56px;
+  line-height: 56px;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
   cursor: pointer;
 `;
 
-export default function Button01(props: any) {
+export default function Button02(props: any) {
   return <Button isActive={props.isActive}>{props.title}</Button>;
 }

@@ -1,20 +1,20 @@
-import { useRouter } from "next/router";
-import LoginUI from "./Login.presenter";
 import * as yup from "yup";
+import LoginUI from "./Login.presenter";
+import { useRouter } from "next/router";
+import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useRecoilState } from "recoil";
 import { accessTokenState, userInfoState } from "../../../commons/store";
 import { LOGIN_USER, FETCH_USER_LOGGED_IN } from "./Login.queries";
 import { useApolloClient, useMutation } from "@apollo/client";
-import { useForm } from "react-hook-form";
 import { Modal } from "antd";
 
-const schema = yup.object({
+export const schema = yup.object({
   email: yup
     .string()
     .email("이메일 형식이 적합하지 않습니다")
     .required("이메일은 필수 입력 사항입니다."),
-  pwd: yup
+  password: yup
     .string()
     .matches(
       /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,16}$/,
@@ -24,23 +24,25 @@ const schema = yup.object({
 });
 
 export default function Login() {
-  const router = useRouter();
-
   const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
   const [userInfo, setUserInfo] = useRecoilState(userInfoState);
+
+  const router = useRouter();
 
   const [loginUser] = useMutation(LOGIN_USER);
   const client = useApolloClient();
 
-  const onClickSignup = () => {
-    router.push("/signup");
-  };
+  const { register, handleSubmit, formState } = useForm({
+    resolver: yupResolver(schema),
+    mode: "onChange",
+  });
 
   const onClickSubmit = async (data: any) => {
     const result = await loginUser({
       variables: { email: data.email, password: data.password },
     });
     const accessToken = result.data.loginUser.accessToken;
+    console.log(accessToken);
 
     const resultUserInfo = await client.query({
       query: FETCH_USER_LOGGED_IN,
@@ -54,18 +56,12 @@ export default function Login() {
 
     setAccessToken(accessToken);
     setUserInfo(userInfo);
-    localStorage.setItem("refreshToken", accessToken);
+    localStorage.setItem("accessToken", accessToken);
     localStorage.setItem("userInfo", JSON.stringify(userInfo));
 
-    alert("로그인 성공");
     Modal.success({ content: "로그인에 성공하였습니다!" });
     router.push("/");
   };
-
-  const { register, handleSubmit, formState } = useForm({
-    resolver: yupResolver(schema),
-    mode: "onChange",
-  });
 
   return (
     <LoginUI
@@ -73,7 +69,6 @@ export default function Login() {
       handleSubmit={handleSubmit}
       formState={formState}
       register={register}
-      onClickSignup={onClickSignup}
     />
   );
 }

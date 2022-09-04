@@ -1,9 +1,10 @@
-import { atom } from "recoil"
+import { atom, selector } from "recoil";
+import { getAccessToken } from "../libraries/getAccessToken";
 
 export const isEditState = atom({
   key: "isEdirState",
   default: false,
-})
+});
 
 export const accessTokenState = atom({
   key: "accessTokenState",
@@ -18,8 +19,7 @@ export const userInfoState = atom({
   },
 });
 
-
 export const basketState = atom({
-  key:"basket",
+  key: "basket",
   default: [],
-})
+});

@@ -27,11 +27,12 @@ export const LoginWrap = styled.div`
 `;
 
 export const LoginOn = styled.span`
-  color: red;
+  color: #75975e;
+  margin-right: 10px;
 `;
 export const Text = styled.span`
   font-family: "Roboto";
-  font-size: 14px;
+  font-size: 16px;
   margin-left: 66px;
   cursor: pointer;
 
