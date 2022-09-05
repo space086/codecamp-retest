@@ -26,6 +26,10 @@ export const LoginWrap = styled.div`
   cursor: pointer;
 `;
 
+export const Point = styled.span`
+  text-decoration: underline;
+`;
+
 export const LoginOn = styled.span`
   color: #75975e;
   margin-right: 10px;
