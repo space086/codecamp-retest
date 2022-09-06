@@ -1,15 +1,32 @@
-import { gql, useQuery } from "@apollo/client";
+import { gql, useMutation, useQuery } from "@apollo/client";
+
 import { useRouter } from "next/router";
 import {
   Wrap,
   Logo,
   RightWrap,
   LoginWrap,
+  Charge,
+  ChargeName,
+  ChargePoint,
+  ChargeBtn,
+  JoinLogoutBtn,
+  Busket,
   Point,
   LoginOn,
   Text,
 } from "./LayoutHeader.styles";
 import Head from "next/head";
+import { useEffect, useState } from "react";
+import { Badge, Modal } from "antd";
+import { useRecoilState } from "recoil";
+import { accessTokenState, basketState } from "../../../../commons/store";
+
+export const LOGOUT_USER = gql`
+  mutation logoutUser {
+    logoutUser
+  }
+`;
 
 const FETCH_BOARD_LOGGED_IN = gql`
   query fetchLoggedIn {
@@ -35,8 +52,24 @@ export default function LayoutHeader() {
   const router = useRouter();
 
   const { data } = useQuery(FETCH_BOARD_LOGGED_IN);
-
   const { data: PointSumData } = useQuery(FETCH_POINT_TRANSCATIONS);
+  const [logoutUser] = useMutation(LOGOUT_USER);
+
+  const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
+  const [basketItems, setBasketItems] = useRecoilState(basketState);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
 
   const onClickMoveToMain = () => {
     router.push("/");
@@ -49,38 +82,59 @@ export default function LayoutHeader() {
   const onClickMoveToSignUp = () => {
     router.push("/signup");
   };
+
+  const onClickJoinLogout = () => {
+    if (localStorage.getItem("accessToken")) {
+      setAccessToken("");
+      localStorage.removeItem("accessToken");
+      logoutUser();
+      router.push("/login");
+    } else {
+      router.push("/join");
+    }
+  };
+
+  useEffect(() => {
+    const baskets = JSON.parse(localStorage.getItem("baskets") || "[]");
+    setBasketItems(baskets);
+  }, []);
+
   return (
     <Wrap>
       <Logo src="/images/logo.png" onClick={onClickMoveToMain} />
       <RightWrap>
         <div>
           {data?.fetchUserLoggedIn ? (
-            <LoginWrap>
-              <LoginOn>{data?.fetchUserLoggedIn.name}</LoginOn>
-              <span>님 포인트</span>
-              <Point>
-                {PointOfLoading?.fetchPointTransactionsOfLoading[0]?.balance} P
-              </Point>
-              <Head>
-                {/* <!-- jQuery --> */}
-                <script
-                  type="text/javascript"
-                  src="https://code.jquery.com/jquery-1.12.4.min.js"
-                ></script>
-                {/* <!-- iamport.payment.js --> */}
-                <script
-                  type="text/javascript"
-                  src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"
-                ></script>
-              </Head>
-            </LoginWrap>
+            <Charge>
+              <ChargeName>{data?.fetchUserLoggedIn.name}님 포인트 </ChargeName>
+              <ChargePoint>
+                {PointSumData?.fetchPointTransactions[0]?.balance} P
+              </ChargePoint>
+            </Charge>
+          ) : (
+            ""
+          )}
+          {data?.fetchUserLoggedIn ? (
+            <ChargeBtn type="primary" onClick={showModal}>
+              충전
+            </ChargeBtn>
           ) : (
             <Text onClick={onClickMoveToLogin}>로그인</Text>
           )}
         </div>
-        {/* <Text onClick={onClickMoveToLogin}>로그인</Text> */}
-        <Text onClick={onClickMoveToSignUp}>회원가입</Text>
-        <Text>장바구니</Text>
+        <Modal
+          title="포인트 충전하기"
+          visible={isModalVisible}
+          onOK={handleOk}
+          onCancel={handleCancel}
+        />
+        <JoinLogoutBtn onClick={onClickJoinLogout}>
+          {data?.fetchUserLoggedIn ? "로그아웃" : "회원가입"}
+        </JoinLogoutBtn>
+        <Busket>장바구니</Busket>
+        <a href="#">
+          <Badge count={basketItems.length}></Badge>
+        </a>
       </RightWrap>
     </Wrap>
   );

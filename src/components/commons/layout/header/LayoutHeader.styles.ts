@@ -26,6 +26,34 @@ export const LoginWrap = styled.div`
   cursor: pointer;
 `;
 
+export const Charge = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-right: 30px;
+  /* color: blueviolet; */
+`;
+export const ChargePoint = styled.div`
+  text-decoration: underline;
+  margin-left: 8px;
+  font-weight: 500;
+`;
+
+export const ChargeName = styled.div``;
+
+export const ChargeBtn = styled.div`
+  text-decoration: underline;
+  font-weight: 500;
+`;
+
+export const JoinLogoutBtn = styled.div`
+  margin-left: 40px;
+  cursor: pointer;
+`;
+
+export const Busket = styled.div`
+  margin-left: 56px;
+  cursor: pointer;
+`;
 export const Point = styled.span`
   text-decoration: underline;
 `;
