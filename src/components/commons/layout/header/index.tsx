@@ -5,15 +5,13 @@ import {
   Wrap,
   Logo,
   RightWrap,
-  LoginWrap,
+  RowWrap,
   Charge,
   ChargeName,
   ChargePoint,
   ChargeBtn,
   JoinLogoutBtn,
   Busket,
-  Point,
-  LoginOn,
   Text,
 } from "./LayoutHeader.styles";
 import Head from "next/head";
@@ -21,6 +19,7 @@ import { useEffect, useState } from "react";
 import { Badge, Modal } from "antd";
 import { useRecoilState } from "recoil";
 import { accessTokenState, basketState } from "../../../../commons/store";
+import ChargePage from "../../modal/payments";
 
 export const LOGOUT_USER = gql`
   mutation logoutUser {
@@ -28,8 +27,8 @@ export const LOGOUT_USER = gql`
   }
 `;
 
-const FETCH_BOARD_LOGGED_IN = gql`
-  query fetchLoggedIn {
+const FETCH_USER_LOGGED_IN = gql`
+  query fetchUserLoggedIn {
     fetchUserLoggedIn {
       email
       name
@@ -51,24 +50,24 @@ export const FETCH_POINT_TRANSCATIONS = gql`
 export default function LayoutHeader() {
   const router = useRouter();
 
-  const { data } = useQuery(FETCH_BOARD_LOGGED_IN);
+  const { data } = useQuery(FETCH_USER_LOGGED_IN);
   const { data: PointSumData } = useQuery(FETCH_POINT_TRANSCATIONS);
   const [logoutUser] = useMutation(LOGOUT_USER);
 
   const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
   const [basketItems, setBasketItems] = useRecoilState(basketState);
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isCharge, setIsCharge] = useState(false);
 
   const showModal = () => {
-    setIsModalVisible(true);
+    setIsCharge(true);
   };
 
   const handleOk = () => {
-    setIsModalVisible(false);
+    setIsCharge(false);
   };
 
   const handleCancel = () => {
-    setIsModalVisible(false);
+    setIsCharge(false);
   };
 
   const onClickMoveToMain = () => {
@@ -103,7 +102,7 @@ export default function LayoutHeader() {
     <Wrap>
       <Logo src="/images/logo.png" onClick={onClickMoveToMain} />
       <RightWrap>
-        <div>
+        <RowWrap>
           {data?.fetchUserLoggedIn ? (
             <Charge>
               <ChargeName>{data?.fetchUserLoggedIn.name}님 포인트 </ChargeName>
@@ -121,13 +120,8 @@ export default function LayoutHeader() {
           ) : (
             <Text onClick={onClickMoveToLogin}>로그인</Text>
           )}
-        </div>
-        <Modal
-          title="포인트 충전하기"
-          visible={isModalVisible}
-          onOK={handleOk}
-          onCancel={handleCancel}
-        />
+        </RowWrap>
+        {isCharge && <ChargePage setIsCharge={setIsCharge} />}
         <JoinLogoutBtn onClick={onClickJoinLogout}>
           {data?.fetchUserLoggedIn ? "로그아웃" : "회원가입"}
         </JoinLogoutBtn>

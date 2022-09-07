@@ -22,6 +22,11 @@ export const RightWrap = styled.div`
   margin-top: 36px;
 `;
 
+export const RowWrap = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
 export const LoginWrap = styled.div`
   cursor: pointer;
 `;
