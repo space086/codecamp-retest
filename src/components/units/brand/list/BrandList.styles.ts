@@ -1,55 +1,35 @@
 import styled from "@emotion/styled";
 
-// export const Wrap = styled.div`
-//   width: 100%;
-//   display: flex;
-//   flex-direction: row;
-//   flex-flow: row wrap;
-//   overflow: auto;
-// `;
+export const AllWrap = styled.div`
+  background-color: #eee;
+  padding-top: 30px;
+`;
 
-// export const ListItemWrap = styled.div`
-//   width: 247px;
-//   height: 320px;
-//   display: flex;
-//   flex-direction: column;
-//   /* align-items: center; */
-//   margin-bottom: 32px;
-//   border: 1px solid #555;
-//   margin-left: auto;
-// `;
-
-// export const ItemPic = styled.img`
-//   width: 245px;
-//   height: 221px;
-// `;
-// export const BlankImage = styled.img`
-//   width: 245px;
-//   height: 221px;
-// `;
-
-// export const TextWrap = styled.div`
-//   padding: 16px;
-// `;
-// export const ItemName = styled.div`
-//   font-size: 16px;
-//   font-weight: 500;
-// `;
-// export const RowWrap = styled.div`
-//   display: flex;
-//   flex-direction: row;
-//   justify-content: space-between;
-//   margin-top: 15px;
-// `;
-// export const ItemPrice = styled.div`
-//   margin-right: 10px;
-// `;
-// export const ItemTime = styled.div``;
-
+export const BestWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 94%;
+  background-color: #fff;
+  margin: 30px auto;
+  /* padding: 30px auto 86px; */
+`;
 export const Wrap = styled.div`
   width: 98%;
-  margin-left: -30px;
-  margin-bottom: 130px;
+  margin: 20px auto 0px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+`;
+
+export const HeadTitle = styled.h3`
+  font-size: 1.38em;
+  text-align: center;
+  padding-top: 30px;
+  margin: 30px auto 86px;
+`;
+
+export const Best = styled.div`
+  width: 98%;
+  margin: 0px auto;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 `;
@@ -59,9 +39,8 @@ export const ListItemWrap = styled.div`
   flex-direction: column;
   width: 261px;
   height: 420px;
-  margin-bottom: 50px;
-  margin-left: auto;
-  /* border: 1px solid #eee; */
+  margin: 0px auto 50px;
+  border: 1px solid #ccc;
 `;
 
 export const PicWrap = styled.div`
@@ -76,11 +55,11 @@ export const Heart = styled.img`
 `;
 
 export const ItemPic = styled.img`
-  width: 260px;
+  width: 258px;
   height: 350px;
 `;
 export const BlankImage = styled.img`
-  width: 260px;
+  width: 258px;
   height: 350px;
 `;
 
@@ -96,7 +75,9 @@ export const ItemTag = styled.div`
 export const ItemName = styled.div`
   font-size: 14px;
   font-weight: 400;
-  font-family: "robo";
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 `;
 export const RowWrap = styled.div`
   display: flex;
@@ -107,7 +88,7 @@ export const ItemPrice = styled.div``;
 export const MarketName = styled.div`
   font-size: 0.88em;
   color: #555;
-  padding: 13px 0;
+  /* padding: 13px 0; */
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -119,4 +100,45 @@ export const Title = styled.h3`
   font-size: 1.38em;
   text-align: center;
   margin: 98px auto;
+`;
+
+export const LeftWrap = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 80px;
+`;
+export const ItemBtn = styled.button`
+  width: 195px;
+  height: 77px;
+  background-color: #fff;
+  border: 1px solid #000;
+  font-weight: 700;
+  font-size: 20px;
+`;
+export const Search = styled.div`
+  width: 534px;
+  height: 39px;
+  border: none;
+  border-bottom: 3px solid #000;
+  padding: 0px 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+`;
+export const SearchIcon = styled.img``;
+export const SearchbarInput = styled.input`
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: none;
+  margin-right: 20px;
+`;
+export const Line = styled.div`
+  width: 90%;
+  border: 1px solid #555;
+  margin: 27px auto 45px;
 `;

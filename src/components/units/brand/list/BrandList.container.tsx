@@ -1,12 +1,23 @@
 import { useRouter } from "next/router";
 import { useQuery } from "@apollo/client";
 import BrandListUI from "./BrandList.presenter";
-import { FETCH_USED_ITEMS } from "./BrandList.queries";
+import {
+  FETCH_USED_ITEMS,
+  FETCH_USED_ITEMS_OF_THE_BEST,
+} from "./BrandList.queries";
 
 export default function BrandList() {
   const router = useRouter();
 
   const { data, fetchMore } = useQuery(FETCH_USED_ITEMS);
+  const { data: fetchUseditemsOfTheBest } = useQuery(
+    FETCH_USED_ITEMS_OF_THE_BEST
+  );
+
+  // 상품 등록페이지로 이동
+  const onClickMoveToMarketsNew = () => {
+    router.push("/brand/new");
+  };
 
   const onClickMoveToMarketsDetail = (el: any) => () => {
     onClickRow(el);
@@ -18,7 +29,6 @@ export default function BrandList() {
 
     const temp = todays.filter((todaysEl: any) => todaysEl._id === el._id);
     if (temp.length === 1) {
-      alert("asdaf");
       return;
     }
 
@@ -54,6 +64,8 @@ export default function BrandList() {
   return (
     <BrandListUI
       data={data}
+      bestList={fetchUseditemsOfTheBest}
+      onClickMoveToMarketsNew={onClickMoveToMarketsNew}
       onClickMoveToMarketsDetail={onClickMoveToMarketsDetail}
       loadMore={loadFunc}
     />

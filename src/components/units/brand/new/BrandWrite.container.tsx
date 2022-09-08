@@ -234,7 +234,7 @@ export default function BrandWrite(props: any) {
         },
       });
       Modal.success({ content: "상품 수정에 성공하였습니다!" });
-      router.push(`/markets/${router.query.useditemId}`);
+      router.push(`/brand/${router.query.useditemId}`);
     } catch (error) {
       // Modal.error({ content: error.message })
       console.log(error);

@@ -16,7 +16,7 @@ export default function Layout(props: any) {
 
   const HIDDEN_HEADER = ["/login", "/signup"];
   // const HIDDEN_NAVIGATION = [];
-  const HIDDEN_BANNER = ["/login", "/signup", "/brand"];
+  const HIDDEN_BANNER = ["/login", "/signup", "/brand", "/brand/new"];
   // const HIDDEN_FOOTER = [];
 
   const isHiddenHeader = HIDDEN_HEADER.includes(router.asPath);

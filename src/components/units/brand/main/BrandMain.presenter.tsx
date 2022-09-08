@@ -30,7 +30,7 @@ export default function BrandMainUI(props: any) {
               <S.MarketName>{el.seller.name}</S.MarketName>
               <S.RowWrap>
                 <S.ItemName>{el.name}</S.ItemName>
-                <S.ItemTime>{getDate(el.createdAt)}</S.ItemTime>
+                {/* <S.ItemTime>{getDate(el.createdAt)}</S.ItemTime> */}
               </S.RowWrap>
             </S.TextWrap>
           </S.ListItemWrap>

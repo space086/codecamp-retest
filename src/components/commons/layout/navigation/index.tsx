@@ -18,7 +18,7 @@ export default function LayoutNavigation() {
   const HIDDEN_NAVIGATION = ["/login", "/signup"];
   const isHiddenNavigation = HIDDEN_NAVIGATION.includes(router.asPath);
 
-  const HIDDEN_NAVIGATION2 = ["/", "/brand"];
+  const HIDDEN_NAVIGATION2 = ["/", "/brand", "/brand/new"];
   const isHiddenNavigation2 = HIDDEN_NAVIGATION2.includes(router.asPath);
 
   return (

@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const Wrap = styled.div`
   width: 98%;
-  margin-left: -30px;
+  /* margin-left: -30px; */
   margin-bottom: 130px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -13,9 +13,8 @@ export const ListItemWrap = styled.div`
   flex-direction: column;
   width: 261px;
   height: 420px;
-  margin-bottom: 50px;
+  margin: 50px auto;
   margin-left: auto;
-  /* border: 1px solid #eee; */
 `;
 
 export const PicWrap = styled.div`
@@ -72,5 +71,5 @@ export const ItemTime = styled.div``;
 export const Title = styled.h3`
   font-size: 1.38em;
   text-align: center;
-  margin: 98px auto;
+  margin: 98px auto 48px;
 `;
